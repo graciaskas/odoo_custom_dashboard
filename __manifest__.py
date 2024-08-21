@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 {
-    "name": "Owl Tutorial",
+    "name": "Coccafatlas dashboard",
     "version": "1.0",
-    "summary": "OWL Tutorial",
+    "summary": "Coccafatlas dashbord",
     "sequence": -1,
-    "description": """OWL Tutorial Custom Dashboard""",
+    "description": """coccafatlas  Dashboard""",
     "category": "OWL",
     "depends": ["base", "web", "sale", "board", "coccafatlas"],
     "data": [
