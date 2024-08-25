@@ -10,7 +10,7 @@
                                 <div class="d-flex align-items-center justify-content-between">
                                     <h2 class="text-primary fw-bold">Tableau de bord</h2>
                                     <div>
-                                        <select class="form-select">
+                                        <select class="form-select" t-model="state.period" t-on-change="onChangePeriod">
                                             <option value="0">Select Period</option>
                                             <option value="7">Last 7 Days</option>
                                             <option value="30">Last 30 Days</option>
@@ -23,11 +23,9 @@
                         </div>
                     </div>
                     <div class="row">
-                        <KpiCard name="'Agriculteurs'" value="10" percentage="6"/>
-                        <KpiCard name="'Champs'" value="20" percentage="20"/>
-                       
+                        <KpiCard onClick.bind="viewAgriculteurs"  name="'Agriculteurs'" value="state.agriculteurs.value" percentage="state.agriculteurs.percentage"/>
+                        <KpiCard onClick.bind="viewChamps" name="'Champs'" value="state.champs.value" percentage="state.champs.percentage"/>
                         <KpiCard name="'Transformateurs'" value="'2.5K'" percentage="-10"/>
-
                         <KpiCard name="'Exportateurs'" value="'2.5K'" percentage="-10"/>
                         <KpiCard name="'Exportations'" value="'1.2K'" percentage="15"/>
                         <KpiCard name="'Guichets'" value="'1.2K'" percentage="15"/>
