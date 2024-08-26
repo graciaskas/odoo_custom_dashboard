@@ -18,6 +18,40 @@ export class OwlSalesDashboard extends Component {
                 value:10,
                 percentage:6,
             },
+            transformateurs: {
+                value:10,
+                percentage:6,
+            },
+            exportateurs: {
+                value:10,
+                percentage:6,
+            },
+           
+            exportations: {
+                value:10,
+                percentage:6,
+            },
+         
+            guichets: {
+                value:10,
+                percentage:6,
+            },
+            transportateurs: {
+                value:10,
+                percentage:6,
+            },
+            intermediaires: {
+                value:10,
+                percentage:6,
+            },
+            achats: {
+                value:10,
+                percentage:6,
+            },
+            services: {
+                value:10,
+                percentage:6,
+            },
             period:30,
         })
 
@@ -27,6 +61,14 @@ export class OwlSalesDashboard extends Component {
             this.getDates()
             await this.getAgriculteurs()
             await this.getChamps()
+            await this.getTransformateurs()
+            await this.getExportateurs()
+            await this.getExportations()
+            await this.getGuichets()
+            await this.getTransportateurs()
+            await this.getIntermediaires()
+            await this.getAchats()
+            await this.getServices()
         })
 
         this.actionService = useService("action")
@@ -36,6 +78,14 @@ export class OwlSalesDashboard extends Component {
         this.getDates()
         await this.getAgriculteurs()
         await this.getChamps()
+        await this.getTransformateurs()
+        await this.getExportateurs()
+        await this.getExportations()
+        await this.getGuichets()
+        await this.getTransportateurs()
+        await this.getIntermediaires()
+        await this.getAchats()
+        await this.getServices()
     }
 
     getDates(){
@@ -78,6 +128,155 @@ export class OwlSalesDashboard extends Component {
         const percentage = ((data - prev_data)/prev_data) * 100
         this.state.champs.percentage = percentage.toFixed(2)
     }
+
+    async getTransformateurs(){
+        let domain = []
+        if (this.state.period > 0){
+            domain.push(['create_date','>', this.state.current_date])
+        }
+        const data = await this.orm.searchCount("cocca.transformateur", domain)
+        this.state.transformateurs.value = data
+
+        // previous period
+        let prev_domain = []
+        if (this.state.period > 0){
+            prev_domain.push(['create_date','>', this.state.previous_date], ['create_date','<=', this.state.current_date])
+        }
+        const prev_data = await this.orm.searchCount("cocca.transformateur", prev_domain)
+        const percentage = ((data - prev_data)/prev_data) * 100
+        this.state.transformateurs.percentage = percentage.toFixed(2)
+    }
+
+    async getExportateurs(){
+        let domain = []
+        if (this.state.period > 0){
+            domain.push(['create_date','>', this.state.current_date])
+        }
+        const data = await this.orm.searchCount("cocca.exportateur", domain)
+        this.state.exportateurs.value = data
+
+        // previous period
+        let prev_domain = []
+        if (this.state.period > 0){
+            prev_domain.push(['create_date','>', this.state.previous_date], ['create_date','<=', this.state.current_date])
+        }
+        const prev_data = await this.orm.searchCount("cocca.exportateur", prev_domain)
+        const percentage = ((data - prev_data)/prev_data) * 100
+        this.state.exportateurs.percentage = percentage.toFixed(2)
+    }
+
+    async getExportations(){
+        let domain = []
+        if (this.state.period > 0){
+            domain.push(['create_date','>', this.state.current_date])
+        }
+        const data = await this.orm.searchCount("cocca.exportation", domain)
+        this.state.exportations.value = data
+
+        // previous period
+        let prev_domain = []
+        if (this.state.period > 0){
+            prev_domain.push(['create_date','>', this.state.previous_date], ['create_date','<=', this.state.current_date])
+        }
+        const prev_data = await this.orm.searchCount("cocca.exportation", prev_domain)
+        const percentage = ((data - prev_data)/prev_data) * 100
+        this.state.exportations.percentage = percentage.toFixed(2)
+    }
+
+    async getGuichets(){
+        let domain = []
+        if (this.state.period > 0){
+            domain.push(['create_date','>', this.state.current_date])
+        }
+        const data = await this.orm.searchCount("cocca.guichet", domain)
+        this.state.guichets.value = data
+
+        // previous period
+        let prev_domain = []
+        if (this.state.period > 0){
+            prev_domain.push(['create_date','>', this.state.previous_date], ['create_date','<=', this.state.current_date])
+        }
+        const prev_data = await this.orm.searchCount("cocca.guichet", prev_domain)
+        const percentage = ((data - prev_data)/prev_data) * 100
+        this.state.guichets.percentage = percentage.toFixed(2)
+    }
+
+    async getTransportateurs(){
+        let domain = []
+        if (this.state.period > 0){
+            domain.push(['create_date','>', this.state.current_date])
+        }
+        const data = await this.orm.searchCount("cocca.transporteur", domain)
+        this.state.transportateurs.value = data
+
+        // previous period
+        let prev_domain = []
+        if (this.state.period > 0){
+            prev_domain.push(['create_date','>', this.state.previous_date], ['create_date','<=', this.state.current_date])
+        }
+        const prev_data = await this.orm.searchCount("cocca.transporteur", prev_domain)
+        const percentage = ((data - prev_data)/prev_data) * 100
+        this.state.transportateurs.percentage = percentage.toFixed(2)
+    }
+
+    async getIntermediaires(){
+        let domain = []
+        if (this.state.period > 0){
+            domain.push(['create_date','>', this.state.current_date])
+        }
+        const data = await this.orm.searchCount("cocca.intermediaire", domain)
+        this.state.intermediaires.value = data
+
+        // previous period
+        let prev_domain = []
+        if (this.state.period > 0){
+            prev_domain.push(['create_date','>', this.state.previous_date], ['create_date','<=', this.state.current_date])
+        }
+        const prev_data = await this.orm.searchCount("cocca.intermediaire", prev_domain)
+        const percentage = ((data - prev_data)/prev_data) * 100
+        this.state.intermediaires.percentage = percentage.toFixed(2)
+    }
+
+    async getAchats(){
+        let domain = []
+        if (this.state.period > 0){
+            domain.push(['create_date','>', this.state.current_date])
+        }
+        const data = await this.orm.searchCount("cocca.achat", domain)
+        this.state.achats.value = data
+
+        // previous period
+        let prev_domain = []
+        if (this.state.period > 0){
+            prev_domain.push(['create_date','>', this.state.previous_date], ['create_date','<=', this.state.current_date])
+        }
+        const prev_data = await this.orm.searchCount("cocca.achat", prev_domain)
+        const percentage = ((data - prev_data)/prev_data) * 100
+        this.state.achats.percentage = percentage.toFixed(2)
+    }
+
+    async getServices(){
+        let domain = []
+        if (this.state.period > 0){
+            domain.push(['create_date','>', this.state.current_date])
+        }
+        const data = await this.orm.searchCount("cocca.service", domain)
+        this.state.services.value = data
+
+        // previous period
+        let prev_domain = []
+        if (this.state.period > 0){
+            prev_domain.push(['create_date','>', this.state.previous_date], ['create_date','<=', this.state.current_date])
+        }
+        const prev_data = await this.orm.searchCount("cocca.service", prev_domain)
+        const percentage = ((data - prev_data)/prev_data) * 100
+        this.state.services.percentage = percentage.toFixed(2)
+    }
+
+   
+
+
+
 
     // Datat view methods
     async viewAgriculteurs(){

@@ -25,14 +25,14 @@
                     <div class="row">
                         <KpiCard onClick.bind="viewAgriculteurs"  name="'Agriculteurs'" value="state.agriculteurs.value" percentage="state.agriculteurs.percentage"/>
                         <KpiCard onClick.bind="viewChamps" name="'Champs'" value="state.champs.value" percentage="state.champs.percentage"/>
-                        <KpiCard name="'Transformateurs'" value="'2.5K'" percentage="-10"/>
-                        <KpiCard name="'Exportateurs'" value="'2.5K'" percentage="-10"/>
-                        <KpiCard name="'Exportations'" value="'1.2K'" percentage="15"/>
-                        <KpiCard name="'Guichets'" value="'1.2K'" percentage="15"/>
-                        <KpiCard name="'Transportateurs'" value="'1.2K'" percentage="15"/>
-                        <KpiCard name="'Intémediaires'" value="'1.2K'" percentage="15"/>
-                        <KpiCard name="'Achats'" value="'30.5K'" percentage="-53"/>
-                        <KpiCard name="'Services'" value="'3K'" percentage="-3"/>
+                        <KpiCard name="'Transformateurs'" value="state.transformateurs.value" percentage="state.transformateurs.percentage"/>
+                        <KpiCard name="'Exportateurs'" value="state.exportateurs.value" percentage="state.exportateurs.percentage"/>
+                        <KpiCard name="'Exportations'" value="state.exportations.value" percentage="state.exportations.percentage"/>
+                        <KpiCard name="'Guichets'" value="state.guichets.value" percentage="state.guichets.percentage"/>
+                        <KpiCard name="'Transportateurs'" value="state.transportateurs.value" percentage="state.transportateurs.percentage"/>
+                        <KpiCard name="'Intémediaires'" value="state.intermediaires.value" percentage="state.intermediaires.percentage"/>
+                        <KpiCard name="'Achats'" value="state.achats.value" percentage="state.achats.percentage"/>
+                        <KpiCard name="'Services'" value="state.services.value" percentage="state.services.percentage"/>
                     </div>
                     <div class="row">
                         <div class="col-lg-6 m-0 p-0">
@@ -49,12 +49,12 @@
                         <div class="col-lg-6 m-0 p-0">
                             <div class="shadow-sm border m-2 p-4 bg-white">
                                 <div class="d-flex align-items-center justify-content-between">
-                                    <h3 class="text-primary fw-bold">Top Sales People</h3>
+                                    <h3 class="text-primary fw-bold">Top Champs</h3>
                                     <div class="px-3 py-1 bg-primary cursor-pointer">
                                         <span class="fa fa-arrow-right text-white"/>
                                     </div>
                                 </div>
-                                <ChartRenderer type="'pie'" title="'Top Sales People Report'"/>
+                                <ChartRenderer type="'pie'" title="'Top champs Report'"/>
                             </div>
                         </div>
                     </div>
