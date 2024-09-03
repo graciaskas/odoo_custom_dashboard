@@ -25,7 +25,7 @@
                     <div class="row">
                         <KpiCard onClick.bind="viewAgriculteurs"  name="'Agriculteurs'" value="state.agriculteurs.value" percentage="state.agriculteurs.percentage"/>
                         <KpiCard onClick.bind="viewChamps" name="'Champs'" value="state.champs.value" percentage="state.champs.percentage"/>
-                        <KpiCard name="'Transformateurs'" value="state.transformateurs.value" percentage="state.transformateurs.percentage"/>
+                        <KpiCard onClick.bind="viewTransformateurs"  name="'Transformateurs'" value="state.transformateurs.value" percentage="state.transformateurs.percentage"/>
                         <KpiCard name="'Exportateurs'" value="state.exportateurs.value" percentage="state.exportateurs.percentage"/>
                         <KpiCard name="'Exportations'" value="state.exportations.value" percentage="state.exportations.percentage"/>
                         <KpiCard name="'Guichets'" value="state.guichets.value" percentage="state.guichets.percentage"/>

@@ -107,7 +107,8 @@ export class OwlSalesDashboard extends Component {
             prev_domain.push(['create_date','>', this.state.previous_date], ['create_date','<=', this.state.current_date])
         }
         const prev_data = await this.orm.searchCount("cocca.agri", prev_domain)
-        const percentage = ((data - prev_data)/prev_data) * 100
+        let percentage;
+        prev_data == 0 ? percentage = ((data - prev_data)/1) / 100: percentage = ((data - prev_data)/prev_data) / 100
         this.state.agriculteurs.percentage = percentage.toFixed(2)
     }
 
@@ -125,7 +126,8 @@ export class OwlSalesDashboard extends Component {
             prev_domain.push(['create_date','>', this.state.previous_date], ['create_date','<=', this.state.current_date])
         }
         const prev_data = await this.orm.searchCount("coca_champ", prev_domain)
-        const percentage = ((data - prev_data)/prev_data) * 100
+        let percentage;
+        prev_data == 0 ? percentage = ((data - prev_data)/1) / 100: percentage = ((data - prev_data)/prev_data) / 100
         this.state.champs.percentage = percentage.toFixed(2)
     }
 
@@ -143,7 +145,8 @@ export class OwlSalesDashboard extends Component {
             prev_domain.push(['create_date','>', this.state.previous_date], ['create_date','<=', this.state.current_date])
         }
         const prev_data = await this.orm.searchCount("cocca.transformateur", prev_domain)
-        const percentage = ((data - prev_data)/prev_data) * 100
+        let percentage;
+        prev_data == 0 ? percentage = ((data - prev_data)/1) / 100: percentage = ((data - prev_data)/prev_data) / 100
         this.state.transformateurs.percentage = percentage.toFixed(2)
     }
 
@@ -161,7 +164,8 @@ export class OwlSalesDashboard extends Component {
             prev_domain.push(['create_date','>', this.state.previous_date], ['create_date','<=', this.state.current_date])
         }
         const prev_data = await this.orm.searchCount("cocca.exportateur", prev_domain)
-        const percentage = ((data - prev_data)/prev_data) * 100
+        let percentage;
+        prev_data == 0 ? percentage = ((data - prev_data)/1) / 100: percentage = ((data - prev_data)/prev_data) / 100
         this.state.exportateurs.percentage = percentage.toFixed(2)
     }
 
@@ -179,7 +183,8 @@ export class OwlSalesDashboard extends Component {
             prev_domain.push(['create_date','>', this.state.previous_date], ['create_date','<=', this.state.current_date])
         }
         const prev_data = await this.orm.searchCount("cocca.exportation", prev_domain)
-        const percentage = ((data - prev_data)/prev_data) * 100
+        let percentage;
+        prev_data == 0 ? percentage = ((data - prev_data)/1) / 100: percentage = ((data - prev_data)/prev_data) / 100
         this.state.exportations.percentage = percentage.toFixed(2)
     }
 
@@ -197,7 +202,8 @@ export class OwlSalesDashboard extends Component {
             prev_domain.push(['create_date','>', this.state.previous_date], ['create_date','<=', this.state.current_date])
         }
         const prev_data = await this.orm.searchCount("cocca.guichet", prev_domain)
-        const percentage = ((data - prev_data)/prev_data) * 100
+        let percentage;
+        prev_data == 0 ? percentage = ((data - prev_data)/1) / 100: percentage = ((data - prev_data)/prev_data) / 100
         this.state.guichets.percentage = percentage.toFixed(2)
     }
 
@@ -215,7 +221,8 @@ export class OwlSalesDashboard extends Component {
             prev_domain.push(['create_date','>', this.state.previous_date], ['create_date','<=', this.state.current_date])
         }
         const prev_data = await this.orm.searchCount("cocca.transporteur", prev_domain)
-        const percentage = ((data - prev_data)/prev_data) * 100
+        let percentage;
+        prev_data == 0 ? percentage = ((data - prev_data)/1) / 100: percentage = ((data - prev_data)/prev_data) / 100
         this.state.transportateurs.percentage = percentage.toFixed(2)
     }
 
@@ -233,7 +240,8 @@ export class OwlSalesDashboard extends Component {
             prev_domain.push(['create_date','>', this.state.previous_date], ['create_date','<=', this.state.current_date])
         }
         const prev_data = await this.orm.searchCount("cocca.intermediaire", prev_domain)
-        const percentage = ((data - prev_data)/prev_data) * 100
+        let percentage;
+        prev_data == 0 ? percentage = ((data - prev_data)/1) / 100: percentage = ((data - prev_data)/prev_data) / 100
         this.state.intermediaires.percentage = percentage.toFixed(2)
     }
 
@@ -251,7 +259,8 @@ export class OwlSalesDashboard extends Component {
             prev_domain.push(['create_date','>', this.state.previous_date], ['create_date','<=', this.state.current_date])
         }
         const prev_data = await this.orm.searchCount("cocca.achat", prev_domain)
-        const percentage = ((data - prev_data)/prev_data) * 100
+        let percentage;
+        prev_data == 0 ? percentage = ((data - prev_data)/1) / 100: percentage = ((data - prev_data)/prev_data) / 100
         this.state.achats.percentage = percentage.toFixed(2)
     }
 
@@ -269,14 +278,10 @@ export class OwlSalesDashboard extends Component {
             prev_domain.push(['create_date','>', this.state.previous_date], ['create_date','<=', this.state.current_date])
         }
         const prev_data = await this.orm.searchCount("cocca.service", prev_domain)
-        const percentage = ((data - prev_data)/prev_data) * 100
+        let percentage;
+        prev_data == 0 ? percentage = ((data - prev_data)/1) / 100: percentage = ((data - prev_data)/prev_data) / 100
         this.state.services.percentage = percentage.toFixed(2)
     }
-
-   
-
-
-
 
     // Datat view methods
     async viewAgriculteurs(){
@@ -313,6 +318,27 @@ export class OwlSalesDashboard extends Component {
             type: "ir.actions.act_window",
             name: "Champs",
             res_model: "coca_champ",
+            domain,
+            views: [
+                [list_view.length > 0 ? list_view[0].res_id : false, "list"], // use list_view id or false
+                [false, "form"],
+            ]
+        })
+    }
+
+    async viewTransformateurs(){
+        let domain = []
+        if (this.state.period > 0){
+            domain.push(['create_date','>', this.state.current_date])
+        }
+
+        // get the id of the list view
+        let list_view = await this.orm.searchRead("ir.model.data", [['name', '=', 'view_cocca_transformateur_tree']], ['res_id'])
+
+        this.actionService.doAction({
+            type: "ir.actions.act_window",
+            name: "Transformateurs",
+            res_model: "cocca.transformateur",
             domain,
             views: [
                 [list_view.length > 0 ? list_view[0].res_id : false, "list"], // use list_view id or false

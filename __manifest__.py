@@ -6,7 +6,7 @@
     "sequence": -1,
     "description": """coccafatlas  Dashboard""",
     "category": "OWL",
-    "depends": ["base", "web", "sale", "board", "coccafatlas"],
+    "depends": ["base", "web", "board", "coccafatlas"],
     "data": [
         "views/sales_dashboard.xml",
     ],
