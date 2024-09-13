@@ -7,7 +7,7 @@ import { loadJS } from "@web/core/assets"
 import { useService } from "@web/core/utils/hooks"
 const { Component, onWillStart, useRef, onMounted,useState } = owl
 
-export class OwlSalesDashboard extends Component {
+export class OwlCoccafatlasDashboard extends Component {
     setup(){
         this.state = useState({
             agriculteurs: {
@@ -348,9 +348,53 @@ export class OwlSalesDashboard extends Component {
     }
     //...
 
+    async viewExportateurs(){
+        let domain = []
+        if (this.state.period > 0){
+            domain.push(['create_date','>', this.state.current_date])
+        }
+
+        // get the id of the list view
+        let list_view = await this.orm.searchRead("ir.model.data", [['name', '=', 'view_cocca_exportateur_tree']], ['res_id'])
+
+        this.actionService.doAction({
+            type: "ir.actions.act_window",
+            name: "Exportateurs",
+            res_model: "cocca.exportateur",
+            domain,
+            views: [
+                [list_view.length > 0 ? list_view[0].res_id : false, "list"], // use list_view id or false
+                [false, "form"],
+            ]
+        })
+    }
+    //...
+    async viewExportations(){
+        let domain = []
+        if (this.state.period > 0){
+            domain.push(['create_date','>', this.state.current_date])
+        }
+
+        // get the id of the list view
+        let list_view = await this.orm.searchRead("ir.model.data", [['name', '=', 'view_cocca_exportation_tree']], ['res_id'])
+
+        this.actionService.doAction({
+            type: "ir.actions.act_window",
+            name: "Exportations",
+            res_model: "cocca.exportation",
+            domain,
+            views: [
+                [list_view.length > 0 ? list_view[0].res_id : false, "list"], // use list_view id or false
+                [false, "form"],
+            ]
+        })
+    }
+    //...
+
+
 }
 
-OwlSalesDashboard.template = "owl.OwlSalesDashboard"
-OwlSalesDashboard.components = { KpiCard, ChartRenderer }
+OwlCoccafatlasDashboard.template = "owl.OwlCoccafatlasDashboard"
+OwlCoccafatlasDashboard.components = { KpiCard, ChartRenderer }
 
-registry.category("actions").add("owl.sales_dashboard", OwlSalesDashboard)
+registry.category("actions").add("owl.coccafatlas_dashboard", OwlCoccafatlasDashboard)

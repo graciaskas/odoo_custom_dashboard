@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="action_owl_coccafatlas_dashboard" model="ir.actions.client">
+            <field name="name">Dashboard</field>
+            <field name="tag">owl.coccafatlas_dashboard</field>
+        </record>
+       
+        <menuitem name="Dashboard" id="menu_owl_coccafatlas_dashboard" sequence="10" action="action_owl_coccafatlas_dashboard" parent="coccafatlas.menu_root"/>
+        
+    </data>
+</odoo>

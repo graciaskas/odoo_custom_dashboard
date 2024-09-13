@@ -7,17 +7,19 @@
     "description": """coccafatlas  Dashboard""",
     "category": "OWL",
     "depends": ["base", "web", "board", "coccafatlas"],
+    "author": "ZeSlap Platforms, Gracias Kasongo",
     "data": [
-        "views/sales_dashboard.xml",
+        "views/coccafatlas_dashboard.xml",
     ],
     "demo": [],
     "installable": True,
-    "application": True,
+    "application": False,
+    "auto_install": False,
     "assets": {
         "web.assets_backend": [
-            "odoo_custom_dashboard/static/src/components/**/*.js",
-            "odoo_custom_dashboard/static/src/components/**/*.xml",
-            "odoo_custom_dashboard/static/src/components/**/*.scss",
+            "coccafatlas_dashboard/static/src/components/**/*.js",
+            "coccafatlas_dashboard/static/src/components/**/*.xml",
+            "coccafatlas_dashboard/static/src/components/**/*.scss",
         ],
     },
 }

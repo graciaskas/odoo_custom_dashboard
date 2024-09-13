@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates xml:space="preserve">
-    <t t-name="owl.OwlSalesDashboard" owl="1">
+    <t t-name="owl.OwlCoccafatlasDashboard" owl="1">
         <div class="vh-100 overflow-auto bg-muted">
             <div class="row m-3">
                 <div class="col-lg-7">
@@ -26,8 +26,8 @@
                         <KpiCard onClick.bind="viewAgriculteurs"  name="'Agriculteurs'" value="state.agriculteurs.value" percentage="state.agriculteurs.percentage"/>
                         <KpiCard onClick.bind="viewChamps" name="'Champs'" value="state.champs.value" percentage="state.champs.percentage"/>
                         <KpiCard onClick.bind="viewTransformateurs"  name="'Transformateurs'" value="state.transformateurs.value" percentage="state.transformateurs.percentage"/>
-                        <KpiCard name="'Exportateurs'" value="state.exportateurs.value" percentage="state.exportateurs.percentage"/>
-                        <KpiCard name="'Exportations'" value="state.exportations.value" percentage="state.exportations.percentage"/>
+                        <KpiCard onClick.bind="viewExportateurs" name="'Exportateurs'" value="state.exportateurs.value" percentage="state.exportateurs.percentage"/>
+                        <KpiCard onClick.bind="viewExportations" name="'Exportations'" value="state.exportations.value" percentage="state.exportations.percentage"/>
                         <KpiCard name="'Guichets'" value="state.guichets.value" percentage="state.guichets.percentage"/>
                         <KpiCard name="'Transportateurs'" value="state.transportateurs.value" percentage="state.transportateurs.percentage"/>
                         <KpiCard name="'Intémediaires'" value="state.intermediaires.value" percentage="state.intermediaires.percentage"/>
