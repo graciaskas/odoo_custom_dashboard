@@ -28,11 +28,11 @@
                         <KpiCard onClick.bind="viewTransformateurs"  name="'Transformateurs'" value="state.transformateurs.value" percentage="state.transformateurs.percentage"/>
                         <KpiCard onClick.bind="viewExportateurs" name="'Exportateurs'" value="state.exportateurs.value" percentage="state.exportateurs.percentage"/>
                         <KpiCard onClick.bind="viewExportations" name="'Exportations'" value="state.exportations.value" percentage="state.exportations.percentage"/>
-                        <KpiCard name="'Guichets'" value="state.guichets.value" percentage="state.guichets.percentage"/>
-                        <KpiCard name="'Transportateurs'" value="state.transportateurs.value" percentage="state.transportateurs.percentage"/>
-                        <KpiCard name="'Intémediaires'" value="state.intermediaires.value" percentage="state.intermediaires.percentage"/>
-                        <KpiCard name="'Achats'" value="state.achats.value" percentage="state.achats.percentage"/>
-                        <KpiCard name="'Services'" value="state.services.value" percentage="state.services.percentage"/>
+                        <KpiCard onClick.bind="viewGuichets" name="'Guichets'" value="state.guichets.value" percentage="state.guichets.percentage"/>
+                        <KpiCard onClick.bind="viewTransportateurs" name="'Transportateurs'" value="state.transportateurs.value" percentage="state.transportateurs.percentage"/>
+                        <KpiCard onClick.bind="viewIntermediaires" name="'Intémediaires'" value="state.intermediaires.value" percentage="state.intermediaires.percentage"/>
+                        <KpiCard onClick.bind="viewAchats" name="'Achats'" value="state.achats.value" percentage="state.achats.percentage"/>
+                        <KpiCard onClick.bind="viewServices" name="'Services'" value="state.services.value" percentage="state.services.percentage"/>
                     </div>
                     <div class="row">
                         <div class="col-lg-6 m-0 p-0">

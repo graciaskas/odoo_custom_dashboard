@@ -368,7 +368,7 @@ export class OwlCoccafatlasDashboard extends Component {
             ]
         })
     }
-    //...
+
     async viewExportations(){
         let domain = []
         if (this.state.period > 0){
@@ -389,9 +389,111 @@ export class OwlCoccafatlasDashboard extends Component {
             ]
         })
     }
+
+    async viewGuichets(){
+        let domain = []
+        if (this.state.period > 0){
+            domain.push(['create_date','>', this.state.current_date])
+        }
+
+        //***  Get the id of the list view
+        let list_view = await this.orm.searchRead("ir.model.data", [['name', '=', 'view_cocca_guichet_tree']], ['res_id'])
+
+        this.actionService.doAction({
+            type: "ir.actions.act_window",
+            name: "Guichets",
+            res_model: "cocca.guichet",
+            domain,
+            views: [
+                [list_view.length > 0 ? list_view[0].res_id : false, "list"], // use list_view id or false
+                [false, "form"],
+            ]
+        })
+    }
+
+    async viewTransportateurs(){
+        let domain = []
+        if (this.state.period > 0){
+            domain.push(['create_date','>', this.state.current_date])
+        }
+
+        //***  Get the id of the list view
+        let list_view = await this.orm.searchRead("ir.model.data", [['name', '=', 'view_cocca_transporteur_tree']], ['res_id'])
+
+        this.actionService.doAction({
+            type: "ir.actions.act_window",
+            name: "Transportateurs",
+            res_model: "cocca.transporteur",
+            domain,
+            views: [
+                [list_view.length > 0 ? list_view[0].res_id : false, "list"], // use list_view id or false
+                [false, "form"],
+            ]
+        })
+    }
+
+    async viewIntermediaires(){
+        let domain = []
+        if (this.state.period > 0){
+            domain.push(['create_date','>', this.state.current_date])
+        }
+
+        //***  Get the id of the list view
+        let list_view = await this.orm.searchRead("ir.model.data", [['name', '=', 'view_cocca_intermediaire_tree']], ['res_id'])
+
+        this.actionService.doAction({
+            type: "ir.actions.act_window",
+            name: "Intermediaires",
+            res_model: "cocca.intermediaire",
+            domain,
+            views: [
+                [list_view.length > 0 ? list_view[0].res_id : false, "list"], // use list_view id or false
+                [false, "form"],
+            ]
+        })
+    }
+    async viewAchats(){
+        let domain = []
+        if (this.state.period > 0){
+            domain.push(['create_date','>', this.state.current_date])
+        }
+
+        // get the id of the list view
+        let list_view = await this.orm.searchRead("ir.model.data", [['name', '=', 'view_cocca_achat_tree']], ['res_id'])
+
+        this.actionService.doAction({
+            type: "ir.actions.act_window",
+            name: "Achats",
+            res_model: "cocca.achat",
+            domain,
+            views: [
+                [list_view.length > 0 ? list_view[0].res_id : false, "list"], // use list_view id or false
+                [false, "form"],
+            ]
+        })
+    }
+    async viewServices(){
+        let domain = []
+        if (this.state.period > 0){
+            domain.push(['create_date','>', this.state.current_date])
+        }
+
+        // get the id of the list view
+        let list_view = await this.orm.searchRead("ir.model.data", [['name', '=', 'view_cocca_service_tree']], ['res_id'])
+
+        this.actionService.doAction({
+            type: "ir.actions.act_window",
+            name: "Services",
+            res_model: "cocca.service",
+            domain,
+            views: [
+                [list_view.length > 0 ? list_view[0].res_id : false, "list"], // use list_view id or false
+                [false, "form"],
+            ]
+        })
+    }
+    
     //...
-
-
 }
 
 OwlCoccafatlasDashboard.template = "owl.OwlCoccafatlasDashboard"

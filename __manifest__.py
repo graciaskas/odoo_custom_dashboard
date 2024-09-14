@@ -3,7 +3,7 @@
     "name": "Coccafatlas dashboard",
     "version": "1.0",
     "summary": "Coccafatlas dashbord",
-    "sequence": -1,
+    "sequence": 2,
     "description": """coccafatlas  Dashboard""",
     "category": "OWL",
     "depends": ["base", "web", "board", "coccafatlas"],
