@@ -52,7 +52,7 @@ export class OwlCoccafatlasDashboard extends Component {
                 value:10,
                 percentage:6,
             },
-            period:30,
+            period:365,
         })
 
         this.orm = useService("orm")

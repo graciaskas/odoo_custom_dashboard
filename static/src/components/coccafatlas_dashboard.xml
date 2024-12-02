@@ -11,11 +11,10 @@
                                     <h2 class="text-primary fw-bold">Tableau de bord</h2>
                                     <div>
                                         <select class="form-select" t-model="state.period" t-on-change="onChangePeriod">
-                                            <option value="0">Select Period</option>
+                                            <option value="365">Last 365 Days</option>
                                             <option value="7">Last 7 Days</option>
                                             <option value="30">Last 30 Days</option>
-                                            <option value="90">Last 90 Days</option>
-                                            <option value="365">Last 365 Days</option>
+                                            <option value="90">Last 90 Days</option>                                       
                                         </select>
                                     </div>
                                 </div>
